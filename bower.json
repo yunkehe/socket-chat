@@ -1,0 +1,26 @@
+{
+  "name": "socket.io-chat",
+  "description": "socket.io chatting room",
+  "main": "app.js",
+  "authors": [
+    "yunkehe"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "nodejs",
+    "angular",
+    "socket.io"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
