@@ -7,6 +7,7 @@
 	<script type="text/javascript" src="components/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="components/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="components/angular/angular.js"></script>
+	<script type="text/javascript" src="components/angular-route/angular-route.js"></script>
 	<!-- socket.io.js引入方式 -->
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 </head>
@@ -19,25 +20,7 @@
 		</div>
 	</div>
 	<div class="container" style="margin-top: 100px;">
-		<div class="col-md-12">
-			<div class="panel panel-defaul room" ng-controller="RoomCtrl">
-				<div class="panel-heading room-header">Chat-Room</div>
-				<div class="panel-body room-content">
-				<!-- 消息列表很多时 自动滚动到底部 -->
-					<div class="list-group messages" auto-scroll-to-bottom>
-						<div class="list-group-item message" ng-repeat="message in messages">
-							某某：{{message}}
-						</div>
-					</div>
-					<form class="message-creator" ng-controller="MessageCreatorCtrl">
-						<div class="form-group">
-						<!-- ctrl+enter自动换行 enter发送消息 -->
-							<textarea required class="form-control message-input" placeholder="Ctrl+Enter to quick send" ng-model="newMessage" ctrl-enter-break-line="createMessage()"></textarea>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
+		<div class="row" ng-view></div>
 	</div>
 </body>
 <script type="text/javascript">
@@ -46,5 +29,10 @@
 	// 	console.log('connected to TechNode!');
 	// });
 </script>
-<script type="text/javascript" src="js/chat-room.js"></script>
+<script type="text/javascript" src="chat-room.js"></script>
+<script type="text/javascript" src="services/socket.js"></script>
+<script type="text/javascript" src="directives/auto-scroll-to-bottom.js"></script>
+<script type="text/javascript" src="directives/ctrl-enter-break-line.js"></script>
+<script type="text/javascript" src="controllers/room.js"></script>
+<script type="text/javascript" src="controllers/message-creator.js"></script>
 </html>

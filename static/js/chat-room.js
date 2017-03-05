@@ -1,4 +1,4 @@
-var chatRoomApp = angular.module('chatRoomApp', []);
+var chatRoomApp = angular.module('chatRoomApp', ['ngRoute']);
 
 var SocketFactory = chatRoomApp.factory('socket', function($rootScope){
 	var socket = io.connect('/');
