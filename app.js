@@ -15,25 +15,26 @@ app.use(express.static(__dirname + '/static'));
 // 	res.sendFile('./static/index.html');
 // });
 
-var Controllers = require('./controllers/user.js');
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // 利用connet-mongo模块连接session
 app.use(session({
-  secret: 'chatRoom',
+  secret: 'chat-room',
   cookie: {maxAge: 1000*60*60*24*30}, // 30 days
   store: new MongoStore({
-    url: 'mongodb://localhost/chatRoom'
+    url: 'mongodb://localhost/chat-room'
   }),
   resave: true, saveUninitialized: true
 }));
 
+// 业务逻辑
+var Controllers = require('./controllers');
 // 验证
 app.get('/api/validate', function(req, res){
 	_userId = req.session._userId;
+
 	if(_userId){
 		Controllers.User.findUserById(_userId, function(err, user){
 			if(err){
@@ -57,7 +58,7 @@ app.post('/api/login', function(req, res){
 				res.status(500).json({msg: err});
 			}else{
 				req.session._userId = user._id;
-				res.status(user);
+				res.status(200).json(user);
 			}
 		});
 	}else{

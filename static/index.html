@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="chatRoomApp">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Chat-Room</title>
@@ -11,7 +11,7 @@
 	<!-- socket.io.js引入方式 -->
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 </head>
-<body>
+<body ng-app="chatRoomApp">
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -29,10 +29,18 @@
 		console.log('connected to chatRoom!');
 	});
 </script>
+<!-- 入口配置 -->
 <script type="text/javascript" src="chat-room.js"></script>
+<script type="text/javascript" src="router.js"></script>
+
+<!-- 服务 -->
 <script type="text/javascript" src="services/socket.js"></script>
+
+<!-- 指令 and 控制器 -->
 <script type="text/javascript" src="directives/auto-scroll-to-bottom.js"></script>
 <script type="text/javascript" src="directives/ctrl-enter-break-line.js"></script>
+
 <script type="text/javascript" src="controllers/room.js"></script>
 <script type="text/javascript" src="controllers/message-creator.js"></script>
+<script type="text/javascript" src="controllers/login.js"></script>
 </html>

@@ -20,7 +20,9 @@ exports.findByEmailOrCreate = function(email, callback){
 			user.email = email;
 			user.avatarUrl = gravatar.url(email);
 
-			user.save(callback);
+			// user.save(callback);
+			var promise = user.save();
+			promise.then(callback);
 		}
 	})
 };
